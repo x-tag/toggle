@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		
+		<title>Toggle Demo - X-Tag</title>
+		<link rel="stylesheet" type="text/css" href="x-tag-components.css"/>
+		<link rel="stylesheet" type="text/css" href="../src/toggle.css"/>
+		<script type="text/javascript" src="x-tag-components.js"></script>
+		<script type="text/javascript" src="../src/toggle.js"></script>	
+			
+		<style type="text/css">
+			
+			
+			body {
+				padding: 30px;
+				margin: 0;
+			}
+			
+		</style>
+	</head>
+
+<body>
+<form>
+	<x-toggle label="Foo" group="group1" checked></x-toggle>
+	<x-toggle label="Bar" group="group1"></x-toggle>
+	<x-toggle label="Zoo" group="group1"></x-toggle>
+	<x-toggle label="Gue" group="group1"></x-toggle>
+	
+	<br/>
+	
+	<x-toggle label="One" name="test2" checked></x-toggle>
+	<x-toggle label="Two" name="test2"></x-toggle>
+	<x-toggle label="Three" name="test2"></x-toggle>
+</form>
+</body>
+
+<script type="text/javascript">
+
+	document.addEventListener('DOMComponentsLoaded', function(){
+		
+		
+		
+	}, false);
+
+</script>
+
+</html>
