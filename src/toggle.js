@@ -15,12 +15,13 @@
         var named = xtag.query(scope, 'x-toggle[name="' + name + '"]' + docSelector),
             type = named.length > 1 ? 'radio' : 'checkbox';
         named.forEach(function(toggle){
-          toggle.firstChild.type = type;
+          if (toggle.firstChild) toggle.firstChild.type = type;
         });
         names[name] = true;
       } 
     });
   }
+  
   var shifted = false;
   xtag.addEvents(document, {
     'DOMComponentsLoaded': function(){
@@ -103,7 +104,7 @@
           return this.getAttribute('name');
         },
         set: function(name){
-          if (name == null) {
+          if (name === null) {
             this.removeAttribute('name');
             this.firstChild.type = 'checkbox';
           }
@@ -117,7 +118,7 @@
         },
         set: function(value){
           var name = this.name,
-              state = (value == 'true' || value == true);
+              state = (value == 'true' || value === true);
           if (name) {
             var previous = xtag.query(this.xtag.scope, 'x-toggle[checked][name="' + name + '"]' + (this.xtag.scope == document ? '[x-toggle-no-form]' : ''))[0];
             if (previous) previous.removeAttribute('checked'); 

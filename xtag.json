@@ -1,8 +1,8 @@
 {
-	"name": "stub",
-	"tagName": "x-stub",
-	"version": "0.1.0",
-	"author": "you",
+	"name": "toggle",
+	"tagName": "x-toggle",
+	"version": "0.2.0",
+	"author": "Daniel Buchner",
 	"description": "",
 	"demo": "demo/index.html",
 	"categories": [],

@@ -18,22 +18,33 @@
 				margin: 0;
 			}
 			
+			[group="group1"] {
+				float: left;
+				clear: both;
+			}
+			
+			form {
+				clear: both;
+				padding-top: 20px;
+			}
+			
 		</style>
 	</head>
 
 <body>
-<form>
-	<x-toggle label="Foo" group="group1" checked></x-toggle>
-	<x-toggle label="Bar" group="group1"></x-toggle>
-	<x-toggle label="Zoo" group="group1"></x-toggle>
-	<x-toggle label="Gue" group="group1"></x-toggle>
+
+	<x-toggle label="Alpha" group="group1" checked></x-toggle>
+	<x-toggle label="Beta" group="group1"></x-toggle>
+	<x-toggle label="Gamma" group="group1"></x-toggle>
+	<x-toggle label="Delta" group="group1"></x-toggle>
+	<x-toggle label="Epsilon" group="group1"></x-toggle>
 	
-	<br/>
+	<form>	
+		<x-toggle label="One" name="test2" checked></x-toggle>
+		<x-toggle label="Two" name="test2"></x-toggle>
+		<x-toggle label="Three" name="test2"></x-toggle>
+	</form>
 	
-	<x-toggle label="One" name="test2" checked></x-toggle>
-	<x-toggle label="Two" name="test2"></x-toggle>
-	<x-toggle label="Three" name="test2"></x-toggle>
-</form>
 </body>
 
 <script type="text/javascript">
