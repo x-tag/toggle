@@ -15,7 +15,9 @@
         var named = xtag.query(scope, 'x-toggle[name="' + name + '"]' + docSelector),
             type = named.length > 1 ? 'radio' : 'checkbox';
         named.forEach(function(toggle){
-          if (toggle.firstChild) toggle.firstChild.type = type;
+          if (toggle.firstChild){
+            toggle.type = type;
+          }
         });
         names[name] = true;
       } 
@@ -75,6 +77,7 @@
     lifecycle: {
       created: function(){
         this.innerHTML = '<input type="checkbox" /><div class="x-toggle-check"></div>';
+        this.type = "checkbox";
         setScope(this);
         var name = this.getAttribute('name');
         if (name) this.firstChild.name = this.getAttribute('name');
@@ -82,6 +85,18 @@
       },
       inserted: function(){
         setScope(this);
+
+        if(this.parentNode && 
+           this.parentNode.nodeName.toLowerCase() === "x-optionbar")
+        {
+            if(this.parentNode.hasAttribute("name")){
+              this.name = this.parentNode.getAttribute("name");
+            }
+            if(this.parentNode.hasAttribute("group")){
+              this.group = this.parentNode.getAttribute("group");
+            }
+        }
+
         if (this.name) updateScope(this.xtag.scope);
       },
       removed: function(){
@@ -90,6 +105,9 @@
       }
     },
     accessors: {
+      type: {
+        attribute: {selector: "input"}
+      },
       label: { attribute: {} },
       active: { attribute: { boolean: true } },
       group: { attribute: {} },
