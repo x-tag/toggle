@@ -28,6 +28,13 @@
 				padding-top: 20px;
 			}
 			
+			.boxless{
+				font-size: 1.5em;
+			}
+			.boxless[checked]{
+				text-shadow: 1px 1px 4px grey;
+			}
+
 		</style>
 	</head>
 
@@ -44,6 +51,11 @@
 		<x-toggle label="Two" name="test2"></x-toggle>
 		<x-toggle label="Three" name="test2"></x-toggle>
 	</form>
+
+	<br/>
+	<x-toggle class="boxless" label="Boxless radio 1" no-box name="boxless"></x-toggle>
+	<x-toggle class="boxless" label="Boxless radio 2" no-box name="boxless"></x-toggle>
+	<x-toggle class="boxless" label="Boxless radio 3" no-box name="boxless"></x-toggle>
 	
 </body>
 

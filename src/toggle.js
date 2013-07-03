@@ -87,7 +87,7 @@
         setScope(this);
 
         if(this.parentNode && 
-           this.parentNode.nodeName.toLowerCase() === "x-optionbar")
+           this.parentNode.nodeName.toLowerCase() === "x-togglegroup")
         {
             if(this.parentNode.hasAttribute("name")){
               this.name = this.parentNode.getAttribute("name");
@@ -95,6 +95,8 @@
             if(this.parentNode.hasAttribute("group")){
               this.group = this.parentNode.getAttribute("group");
             }
+
+            this.setAttribute("no-box", true);
         }
 
         if (this.name) updateScope(this.xtag.scope);
@@ -105,6 +107,13 @@
       }
     },
     accessors: {
+      noBox: {
+        attribute: {
+          name: "no-box",
+          boolean: true
+        },
+        set: function(){}
+      },
       type: {
         attribute: {selector: "input"}
       },

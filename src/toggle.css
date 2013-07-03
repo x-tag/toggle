@@ -15,6 +15,7 @@ x-toggle input {
 	margin: 0 !important;
 	opacity: 0.0001 !important;
 	cursor: pointer;
+	z-index: 999;
 }
 
 x-toggle:after {
@@ -37,6 +38,10 @@ x-toggle:after {
 	-moz-transition: border 0.15s 0s ease-in-out;
 	-ms-transition: border 0.15s 0s ease-in-out;
 	transition: border 0.15s 0s ease-in-out;
+}
+
+x-toggle[no-box] > .x-toggle-check{
+	display: none !important;
 }
 
 input[type="radio"] + .x-toggle-check {
