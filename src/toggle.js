@@ -1,23 +1,43 @@
 (function(){
+  /** setScope: DOM element 
+
+  Given an x-toggle element:
+  - autoupdates the xtag.scope property of the toggle with the current form 
+    it is in, if any; 
+  - Otherwise set scope as the current document and add a 'x-toggle-no-form'
+    attribute, if a document exists
+  - Otherwise set as null
+  **/
   function setScope(toggle){
     var form = toggle.xtag.inputEl.form;
-    form ? toggle.removeAttribute('x-toggle-no-form') : toggle.setAttribute('x-toggle-no-form', '');
-    toggle.xtag.scope = toggle.parentNode ? form || document : null;
+    (form) ? toggle.removeAttribute('x-toggle-no-form') : 
+             toggle.setAttribute('x-toggle-no-form', '');
+    toggle.xtag.scope = (toggle.parentNode) ? (form || document) : null;
   }
   
+  /** updateScope: DOM element
+
+  given a scope (ie: a form or the document), searches for all toggles belonging
+  to the scope and updates their checkbox/radio type
+  **/
   function updateScope(scope){
     var names = {},
-        docSelector = scope == document ? '[x-toggle-no-form]' : '';
-    xtag.query(scope, 'x-toggle[name]' + docSelector).forEach(function(toggle){
+        // specify a special no-form selector if scope is document to prevent
+        // looking into toggles belonging to a child form
+        docSelector = (scope == document) ? '[x-toggle-no-form]' : '';
+    // search the scope for the named toggles belonging to it
+    xtag.query(scope, 'x-toggle[name]'+docSelector).forEach(function(toggle){
       var name = toggle.name;
       if (name && !names[name]) {
-        var named = xtag.query(scope, 'x-toggle[name="' + name + '"]' + docSelector),
+        // update the checkbox/radio type of all toggles with the same name 
+        var named = xtag.query(scope, 'x-toggle[name="'+name +'"]'+docSelector),
             type = named.length > 1 ? 'radio' : 'checkbox';
         named.forEach(function(toggle){
           if (toggle.xtag && toggle.xtag.inputEl){
             toggle.type = type;
           }
         });
+        // cache the name to prevent repeating update for same named toggles
         names[name] = true;
       } 
     });
@@ -46,23 +66,31 @@
       this.removeAttribute('focus');
     },
     'tap:delegate(x-toggle)': function(e){
+      // if shift is being held, check all group toggles in between the tapped
+      // toggle and the previously tapped toggle
       if (shifted && this.group) {
         var toggles = this.groupToggles,
-            active = this.xtag.scope.querySelector('x-toggle[group="'+ this.group +'"][active]');
+            active = this.xtag.scope.querySelector('x-toggle[group="'+
+                                                   this.group+'"][active]');
         if (active && this != active) {
           var self = this,
               state = active.checked,
               index = toggles.indexOf(this),
-              activeIndex = toggles.indexOf(active);
-          toggles.slice(Math.min(index, activeIndex), Math.max(index, activeIndex)).forEach(function(toggler){
+              activeIndex = toggles.indexOf(active),
+              minIndex = Math.min(index, activeIndex),
+              maxIndex = Math.max(index, activeIndex);
+          toggles.slice(minIndex, maxIndex).forEach(function(toggler){
             if (toggler != self) toggler.checked = state;
           });
         }
       }
     },
     'change:delegate(x-toggle)': function(e){
-      var active = this.xtag.scope.querySelector('x-toggle[group="'+ this.group +'"][active]');
-      this.checked = (shifted && active && (this != active)) ? active.checked : this.xtag.inputEl.checked;
+      // manage the active state of any group toggles
+      var active = this.xtag.scope.querySelector('x-toggle[group="'+ 
+                                                 this.group +'"][active]');
+      this.checked = (shifted && active && (this != active)) ? 
+                          active.checked : this.xtag.inputEl.checked;
       if (this.group) {
         this.groupToggles.forEach(function(toggle){
           toggle.active = false;
@@ -75,16 +103,21 @@
   xtag.register('x-toggle', {
     lifecycle: {
       created: function(){
-        this.innerHTML = '<label><input type="checkbox"/></label><div class="x-toggle-content-wrap"><div class="x-toggle-check"></div> <div class="x-toggle-content"></div></div>';
+        this.innerHTML = '<label class="x-toggle-label">'+
+                             '<input type="checkbox"></input>'+
+                         '</label>' +
+                         '<div class="x-toggle-check"></div>' +
+                         '<div class="x-toggle-content"></div>';
 
-        this.xtag.inputWrapEl = this.querySelector("label");
-        this.xtag.inputEl = this.querySelector("input");
-
+        this.xtag.inputWrapEl = this.querySelector(".x-toggle-label");
+        this.xtag.inputEl = this.xtag.inputWrapEl.querySelector("input");
         this.xtag.contentWrapEl = this.querySelector(".x-toggle-content-wrap");
         this.xtag.checkEl = this.querySelector(".x-toggle-check");
         this.xtag.contentEl = this.querySelector(".x-toggle-content");
+
         this.type = "checkbox";
         setScope(this);
+
         var name = this.getAttribute('name');
         if (name) this.xtag.inputEl.name = this.getAttribute('name');
         if (this.hasAttribute('checked')) this.checked = true;
@@ -102,7 +135,7 @@
             if(this.parentNode.hasAttribute("group")){
               this.group = this.parentNode.getAttribute("group");
             }
-            //this.setAttribute("no-box", true);
+            this.setAttribute("no-box", true);
         }
 
         if (this.name) updateScope(this.xtag.scope);
@@ -121,7 +154,7 @@
         set: function(){}
       },
       type: {
-        attribute: {selector: "input"}
+        attribute: {selector: ".x-toggle-label > input"}
       },
       label: { 
         attribute: {},
@@ -136,20 +169,26 @@
       group: { attribute: {} },
       groupToggles: {
         get: function(){
-          return xtag.query(this.xtag.scope, 'x-toggle[group="' + this.group + '"]');
+          return xtag.query(this.xtag.scope, 
+                            'x-toggle[group="' + this.group + '"]');
         }
       },
       name: {
-        attribute: {},
+        attribute: {
+          skip: true // to prevent recursion when needing to remove attribute
+        },
         get: function(){
-          return this.getAttribute('name');
+          return this.getAttribute("name");
         },
         set: function(name){
           if (name === null) {
-            this.removeAttribute('name');
-            this.xtag.inputEl.type = 'checkbox';
+            this.removeAttribute("name");
+            this.type = 'checkbox';
           }
-          else this.xtag.inputEl.name = name;
+          else{
+            this.setAttribute("name", name);
+          } 
+          this.xtag.inputEl.name = name;
           updateScope(this.xtag.scope);
         }
       },
@@ -159,13 +198,18 @@
         },
         set: function(value){
           var name = this.name,
-              state = (value == 'true' || value === true);
+              state = (value === 'true' || value === true);
           if (name) {
-            var previous = this.xtag.scope.querySelector('x-toggle[checked][name="' + name + '"]' + (this.xtag.scope == document ? '[x-toggle-no-form]' : ''));
+            var scopeSelector = (this.xtag.scope == document) ? 
+                                            '[x-toggle-no-form]' : '';
+            var selector = 'x-toggle[checked][name="'+name+'"]' + scopeSelector;
+            // get previously checked toggle and untoggle it
+            var previous = this.xtag.scope.querySelector(selector);
             if (previous) previous.removeAttribute('checked'); 
           }
           this.xtag.inputEl.checked = state;
-          state ? this.setAttribute('checked', '') : this.removeAttribute('checked');
+          (state) ? this.setAttribute('checked', '') : 
+                    this.removeAttribute('checked');
         }
       }
     }

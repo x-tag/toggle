@@ -4,28 +4,32 @@ x-toggle {
 	position: relative;
 }
 
-x-toggle > label{
-	position: absolute;
-	margin: 0 !important;
-	left: 0 !important;
-	top: 0 !important;
+x-toggle > .x-toggle-label{
+	cursor: pointer;
+
+	position: absolute !important;
+	margin: 0px !important;
+	left: 0% !important;
+	top: 0% !important;
 	width: 100% !important;
 	height: 100% !important;
-	cursor: pointer;
-	display: inline-block;
+	display: inline-block !important;
 
 	/* do not remove visibility or display because we still want tabbability
 	   and submissability */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.0001)";
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.0001)" !important;
 	opacity: 0.0001 !important; 
+	z-index: 9999 !important;
+}
 
-	z-index: 999 !important;
+x-toggle > .x-toggle-label > input{
+	cursor: pointer;
 }
 
 x-toggle .x-toggle-content{
 	display: inline-block;
 	vertical-align: middle;
-	margin: 0;
+	margin: 0px;
 }
 
 x-toggle .x-toggle-check {
@@ -35,7 +39,7 @@ x-toggle .x-toggle-check {
 	box-sizing: border-box;
 	width: 16px;
 	height: 16px;
-	margin-right: 3px;
+	margin: 0px 3px 0px 0px;
 	color: #000;
 	vertical-align: middle;
 	border: 2px solid;

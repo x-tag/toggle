@@ -26,22 +26,38 @@
 				padding-top: 20px;
 			}
 			
-			.boxless{
+			[name='boxless']{
 				font-size: 1.5em;
 				padding: 10px;
 				border: 1px solid transparent;
 			}
 
-			.boxless[checked]{
+			[name='boxless'][checked]{
 				border: 1px solid orange;
 				background-color: #ffc151;
 				border-radius: 4px;
 			}
 
-			.boxless[focus]{
+			[name='boxless'][focus]{
 				box-shadow: 0px 0px 10px rgba(0, 100, 155, 0.8);
 			}
 
+			.custom-html-toggle{
+				opacity: 0.5;
+			}
+
+			.custom-html-toggle img{
+				border: 2px solid grey;
+				border-radius: 4px;
+			}
+
+			.custom-html-toggle[checked]{
+				opacity: 1;
+			}
+
+			.custom-html-toggle[focus] img{
+				box-shadow: 1px 1px 4px rgba(0, 100, 155, 0.8);
+			}
 		</style>
 	</head>
 
@@ -60,9 +76,14 @@
 	</form>
 
 	<br/>
-	<x-toggle class="boxless" label="Boxless radio 1" no-box name="boxless"></x-toggle>
-	<x-toggle class="boxless" label="Boxless radio 2" no-box name="boxless"></x-toggle>
-	<x-toggle class="boxless" label="Boxless radio 3" no-box name="boxless"></x-toggle>
+	<x-toggle name="boxless" label="Boxless radio 1" no-box ></x-toggle>
+	<x-toggle name="boxless" label="Boxless radio 2" no-box ></x-toggle>
+	<x-toggle name="boxless" label="Boxless radio 3" no-box ></x-toggle>
+
+	<p>Custom html labels:</p>
+	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/50' width=50 height=50/>"></x-toggle>
+	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/51' width=50 height=50/>"></x-toggle>
+	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/51/50' width=50 height=50/>"></x-toggle>
 	
 </body>
 
