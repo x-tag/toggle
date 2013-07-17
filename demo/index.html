@@ -11,8 +11,6 @@
 		<script type="text/javascript" src="../src/toggle.js"></script>	
 			
 		<style type="text/css">
-			
-			
 			body {
 				padding: 30px;
 				margin: 0;
@@ -30,9 +28,18 @@
 			
 			.boxless{
 				font-size: 1.5em;
+				padding: 10px;
+				border: 1px solid transparent;
 			}
+
 			.boxless[checked]{
-				text-shadow: 1px 1px 4px grey;
+				border: 1px solid orange;
+				background-color: #ffc151;
+				border-radius: 4px;
+			}
+
+			.boxless[focus]{
+				box-shadow: 0px 0px 10px rgba(0, 100, 155, 0.8);
 			}
 
 		</style>

@@ -2,28 +2,33 @@
 x-toggle {
 	display: inline-block;
 	position: relative;
-	cursor: pointer;
 }
 
-x-toggle input {
-	display: block !important;
-	position: absolute !important;
-	top: 0 !important;
-	left: 0 !important;
-	height: 100% !important;
-	width: 100% !important;
+x-toggle > label{
+	position: absolute;
 	margin: 0 !important;
-	opacity: 0.0001 !important;
+	left: 0 !important;
+	top: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
 	cursor: pointer;
-	z-index: 999;
+	display: inline-block;
+
+	/* do not remove visibility or display because we still want tabbability
+	   and submissability */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.0001)";
+	opacity: 0.0001 !important; 
+
+	z-index: 999 !important;
 }
 
-x-toggle:after {
-	content: attr(label);
+x-toggle .x-toggle-content{
+	display: inline-block;
 	vertical-align: middle;
+	margin: 0;
 }
 
-.x-toggle-check {
+x-toggle .x-toggle-check {
 	display: inline-block;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -40,19 +45,19 @@ x-toggle:after {
 	transition: border 0.15s 0s ease-in-out;
 }
 
-x-toggle[no-box] > .x-toggle-check{
+x-toggle[no-box] .x-toggle-check {
 	display: none !important;
 }
 
-input[type="radio"] + .x-toggle-check {
+x-toggle[type="radio"] .x-toggle-check {
 	border-radius: 50%;
 }
 
-input:checked + .x-toggle-check {
+x-toggle[checked] .x-toggle-check {
 	border-width: 8px;
 }
 
-input:focus + .x-toggle-check {
+x-toggle[focus] .x-toggle-check {
 	-webkit-box-shadow: 0 0 2px 1px rgba(0, 100, 155, 0.8);
 	-moz-box-shadow: 0 0 2px 1px rgba(0, 100, 155, 0.8);
 	-ms-box-shadow: 0 0 2px 1px rgba(0, 100, 155, 0.8);
