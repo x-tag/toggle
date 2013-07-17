@@ -10,8 +10,9 @@
   **/
   function setScope(toggle){
     var form = toggle.xtag.inputEl.form;
-    (form) ? toggle.removeAttribute('x-toggle-no-form') : 
-             toggle.setAttribute('x-toggle-no-form', '');
+    if(form) toggle.removeAttribute('x-toggle-no-form');
+    else toggle.setAttribute('x-toggle-no-form', '');
+
     toggle.xtag.scope = (toggle.parentNode) ? (form || document) : null;
   }
   
@@ -208,8 +209,8 @@
             if (previous) previous.removeAttribute('checked'); 
           }
           this.xtag.inputEl.checked = state;
-          (state) ? this.setAttribute('checked', '') : 
-                    this.removeAttribute('checked');
+          if (state) this.setAttribute('checked', '');
+          else this.removeAttribute('checked');
         }
       }
     }
