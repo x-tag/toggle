@@ -17,13 +17,11 @@
 			}
 			
 			[group="group1"] {
-				float: left;
-				clear: both;
+				display: block;
 			}
-			
+
 			form {
-				clear: both;
-				padding-top: 20px;
+				border: 1px solid grey;
 			}
 			
 			[name='boxless']{
@@ -42,16 +40,13 @@
 				box-shadow: 0px 0px 10px rgba(0, 100, 155, 0.8);
 			}
 
-			.custom-html-toggle{
-				opacity: 0.5;
-			}
-
 			.custom-html-toggle img{
 				border: 2px solid grey;
 				border-radius: 4px;
+				opacity: 0.5;
 			}
 
-			.custom-html-toggle[checked]{
+			.custom-html-toggle[checked] img{
 				opacity: 1;
 			}
 
@@ -68,18 +63,22 @@
 	<x-toggle label="Gamma" group="group1"></x-toggle>
 	<x-toggle label="Delta" group="group1"></x-toggle>
 	<x-toggle label="Epsilon" group="group1"></x-toggle>
-	
-	<form>	
-		<x-toggle label="One" name="test2" checked></x-toggle>
-		<x-toggle label="Two" name="test2"></x-toggle>
-		<x-toggle label="Three" name="test2"></x-toggle>
+	<hr/>
+	<form action="http://www.cs.tut.fi/cgi-bin/run/~jkorpela/echo.cgi" method="POST">	
+		<x-toggle label="One" name="number" checked></x-toggle>
+		<x-toggle label="Two" name="number"></x-toggle>
+		<x-toggle label="Three" name="number"></x-toggle>
+		<br/>
+		<x-toggle label="Lone checkbox" name="lone-check" checked></x-toggle>
+		<br/>
+		<input type="submit"></input>
 	</form>
 
-	<br/>
-	<x-toggle name="boxless" label="Boxless radio 1" no-box ></x-toggle>
-	<x-toggle name="boxless" label="Boxless radio 2" no-box ></x-toggle>
-	<x-toggle name="boxless" label="Boxless radio 3" no-box ></x-toggle>
-
+	<hr/>
+	<x-toggle name="boxless" label="Boxless radio 1" no-box></x-toggle>
+	<x-toggle name="boxless" label="Boxless radio 2" no-box></x-toggle>
+	<x-toggle name="boxless" label="Boxless radio 3" no-box></x-toggle>
+	<hr/>
 	<p>Custom html labels:</p>
 	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/50' width=50 height=50/>"></x-toggle>
 	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/51' width=50 height=50/>"></x-toggle>

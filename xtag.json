@@ -3,7 +3,7 @@
 	"tagName": "x-toggle",
 	"version": "0.2.0",
 	"author": "Daniel Buchner",
-	"description": "",
+	"description": "A polyfill for radiobutton/checkbox inputs to provide a consistent UI and simplify markup",
 	"demo": "demo/index.html",
 	"categories": [],
 	"compatibility": {
@@ -15,11 +15,33 @@
 		"ios": 4
 	},
 	"documentation": {
-		"description": "",
-		"attributes": {},
+		"description": "A polyfill for radiobutton/checkbox inputs to provide a consistent UI and simplify markup",
+		"attributes": {
+			"no-box": "If set, hides the polyfill's checkbox/radio button.",
+			"label": "Contains the raw HTML to render as the toggle's label.",
+			"name": "Handles the name of the input. Follows the same rules as radio/checkbox input naming, and is required for form submissions to see the input.",
+			"group": "Checkboxes with the same group can be range-toggled by holding down the shift key while toggling checkboxes",
+			"active": "Handles whether or not the toggle is the currently active toggle in of its group, if it has one.",
+			"checked": "Handles whether the toggle is checked or not"
+		},
 		"events": {},
 		"methods": {},
-		"getters": {},
-		"setters": {}
+		"getters": {
+			"groupToggles": "Returns a list of all toggles sharing the same group",
+			"noBox": "Returns the value of the no-box attribute",
+			"label": "Returns the value of the label attribute",
+			"name": "Returns the value of the name attribute",
+			"group": "Returns the value of the group attribute",
+			"active": "Returns the value of the active attribute",
+			"checked": "Returns the value of the checked attribute"
+		},
+		"setters": {
+			"noBox": "Sets the value of the no-box attribute",
+			"label": "Sets the value of the label attribute",
+			"name": "Sets the value of the name attribute",
+			"group": "Sets the value of the group attribute",
+			"active": "Sets the value of the active attribute",
+			"checked": "Sets the value of the checked attribute"
+		}
 	}
 }

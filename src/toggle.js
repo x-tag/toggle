@@ -103,13 +103,13 @@
   xtag.register('x-toggle', {
     lifecycle: {
       created: function(){
-        this.innerHTML = '<label class="x-toggle-label">'+
+        this.innerHTML = '<label class="x-toggle-input-wrap">'+
                              '<input type="checkbox"></input>'+
                          '</label>' +
                          '<div class="x-toggle-check"></div>' +
                          '<div class="x-toggle-content"></div>';
 
-        this.xtag.inputWrapEl = this.querySelector(".x-toggle-label");
+        this.xtag.inputWrapEl = this.querySelector(".x-toggle-input-wrap");
         this.xtag.inputEl = this.xtag.inputWrapEl.querySelector("input");
         this.xtag.contentWrapEl = this.querySelector(".x-toggle-content-wrap");
         this.xtag.checkEl = this.querySelector(".x-toggle-check");
@@ -154,7 +154,7 @@
         set: function(){}
       },
       type: {
-        attribute: {selector: ".x-toggle-label > input"}
+        attribute: {selector: ".x-toggle-input-wrap > input"}
       },
       label: { 
         attribute: {},

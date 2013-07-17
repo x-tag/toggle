@@ -4,7 +4,7 @@ x-toggle {
 	position: relative;
 }
 
-x-toggle > .x-toggle-label{
+x-toggle > .x-toggle-input-wrap{
 	cursor: pointer;
 
 	position: absolute !important;
@@ -22,7 +22,7 @@ x-toggle > .x-toggle-label{
 	z-index: 9999 !important;
 }
 
-x-toggle > .x-toggle-label > input{
+x-toggle > .x-toggle-input-wrap > input{
 	cursor: pointer;
 }
 
