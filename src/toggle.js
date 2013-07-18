@@ -33,6 +33,7 @@
         // update the checkbox/radio type of all toggles with the same name 
         var named = xtag.query(scope, 'x-toggle[name="'+name +'"]'+docSelector),
             type = named.length > 1 ? 'radio' : 'checkbox';
+        console.log("name", name, "type", type);
         named.forEach(function(toggle){
           if (toggle.xtag && toggle.xtag.inputEl){
             toggle.type = type;
@@ -155,7 +156,10 @@
         set: function(){}
       },
       type: {
-        attribute: {selector: ".x-toggle-input-wrap > input"}
+        attribute: {},
+        set: function(newType){
+          this.xtag.inputEl.type = newType;
+        }
       },
       label: { 
         attribute: {},
