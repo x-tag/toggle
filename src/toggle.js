@@ -216,6 +216,16 @@
           if (state) this.setAttribute('checked', '');
           else this.removeAttribute('checked');
         }
+      },
+
+      value: {
+        attribute: {},
+        get: function(){
+          return this.xtag.inputEl.value;
+        },
+        set: function(newVal){
+          this.xtag.inputEl.value = newVal;
+        }
       }
     }
   });
