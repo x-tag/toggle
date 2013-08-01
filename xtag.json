@@ -1,11 +1,11 @@
 {
-	"name": "toggle",
+	"name": "Toggle",
 	"tagName": "x-toggle",
 	"version": "0.2.0",
 	"author": "Daniel Buchner",
 	"description": "A polyfill for radiobutton/checkbox inputs to provide a consistent UI and simplify markup",
 	"demo": "demo/index.html",
-	"categories": [],
+	"categories": ["input"],
 	"compatibility": {
 		"firefox": 5,
 		"chrome": 4,
