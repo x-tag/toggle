@@ -20,11 +20,11 @@
 		"description": "A polyfill for radiobutton/checkbox inputs to provide a consistent UI and simplify markup",
 		"attributes": {
 			"no-box": "If set, hides the polyfill's checkbox/radio button.",
-			"label": "Contains the raw HTML to render as the toggle's label.",
-			"name": "Handles the name of the input. Follows the same rules as radio/checkbox input naming, and is required for form submissions to see the input.",
+			"label": "Contains the raw HTML string to render as the toggle's label.",
+			"name": "Handles the name of the input. Follows the same rules as radio/checkbox input naming, and is required for form submissions to see the input. Multiple <x-toggle>s with the same name automatically become radio buttons.",
 			"group": "Checkboxes with the same group can be range-toggled by holding down the shift key while toggling checkboxes",
-			"active": "Handles whether or not the toggle is the currently active toggle in of its group, if it has one.",
-			"checked": "Handles whether the toggle is checked or not"
+			"active": "Indicates whether or not the toggle is the currently active toggle in of its group, if it has one.",
+			"checked": "Indicates whether the toggle is checked or not"
 		},
 		"events": {},
 		"methods": {},
