@@ -69,7 +69,7 @@
 	<x-toggle label="Delta" group="group1" value="D"></x-toggle>
 	<x-toggle label="Epsilon" group="group1" value="E"></x-toggle>
 	<hr/>
-	<form action="http://www.cs.tut.fi/cgi-bin/run/~jkorpela/echo.cgi" method="POST">	
+	<form>	
 		<x-toggle label="One" name="number" value="1" checked></x-toggle>
 		<x-toggle label="Two" name="number" value="2"></x-toggle>
 		<x-toggle label="Three" name="number" value="3"></x-toggle>
@@ -94,7 +94,27 @@
 <script type="text/javascript">
 
 	document.addEventListener('DOMComponentsLoaded', function(){
-		
+		var form = document.querySelector("form");
+	    form.addEventListener("submit", function(e){
+	        // retrieves all _actual_ <input> elements (ie: not fake polyfills)
+	        var inputElems = e.currentTarget.elements;
+	        var vals = [];
+	        for (var i = 0; i < inputElems.length; i++) {
+	            var input = inputElems[i];
+	            if(!input.name) continue;
+	            if((input.type === "radio" || input.type === "checkbox") &&
+	            	(!input.checked))
+	            {
+	            	continue;
+	            }
+
+	            vals.push(encodeURIComponent(input.name) + "=" + 
+	                      encodeURIComponent(input.value));
+	        }
+	        alert("submitted: " + vals.join("&"));
+	        e.preventDefault();
+	        e.stopPropagation();
+	    });
 		
 		
 	}, false);
