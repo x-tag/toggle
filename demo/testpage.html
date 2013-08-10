@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		
+		<title>Toggle Demo - X-Tag</title>
+		<!-- use these imports instead of the Brick files if running from submodule
+          repository instead of the Brick repository -->
+        <!--
+		<link rel="stylesheet" type="text/css" href="x-tag-components.css"/>
+		<link rel="stylesheet" type="text/css" href="../src/toggle.css"/>
+		<script type="text/javascript" src="x-tag-components.js"></script>
+		<script type="text/javascript" src="../src/toggle.js"></script>	-->
+		<link rel="stylesheet" type="text/css" href="../../../dist/brick.css"/>
+    	<script type="text/javascript" src="../../../dist/brick.js"></script> 
+			
+		<style type="text/css">
+			body {
+				padding: 30px;
+				margin: 0;
+			}
+			
+			[group="group1"] {
+				display: block;
+			}
+
+			form {
+				border: 1px solid grey;
+			}
+			
+			[name='boxless']{
+				font-size: 1.5em;
+				padding: 10px;
+				border: 1px solid transparent;
+			}
+
+			[name='boxless'][checked]{
+				border: 1px solid orange;
+				background-color: #ffc151;
+				border-radius: 4px;
+			}
+
+			[name='boxless'][focus]{
+				box-shadow: 0px 0px 10px rgba(0, 100, 155, 0.8);
+			}
+
+			.custom-html-toggle img{
+				border: 2px solid grey;
+				border-radius: 4px;
+				opacity: 0.5;
+			}
+
+			.custom-html-toggle[checked] img{
+				opacity: 1;
+			}
+
+			.custom-html-toggle[focus] img{
+				box-shadow: 1px 1px 4px rgba(0, 100, 155, 0.8);
+			}
+		</style>
+	</head>
+
+<body>
+
+	<x-toggle label="Alpha" group="group1" value="A" checked></x-toggle>
+	<x-toggle label="Beta" group="group1" value="B"></x-toggle>
+	<x-toggle label="Gamma" group="group1" value="C"></x-toggle>
+	<x-toggle label="Delta" group="group1" value="D"></x-toggle>
+	<x-toggle label="Epsilon" group="group1" value="E"></x-toggle>
+	<hr/>
+	<form>	
+		<x-toggle label="One" name="number" value="1" checked></x-toggle>
+		<x-toggle label="Two" name="number" value="2"></x-toggle>
+		<x-toggle label="Three" name="number" value="3"></x-toggle>
+		<br/>
+		<x-toggle label="Lone checkbox" name="lone-check" value="wow" checked></x-toggle>
+		<br/>
+		<input type="submit"></input>
+	</form>
+
+	<hr/>
+	<x-toggle name="boxless" label="Boxless radio 1" no-box></x-toggle>
+	<x-toggle name="boxless" label="Boxless radio 2" no-box></x-toggle>
+	<x-toggle name="boxless" label="Boxless radio 3" no-box></x-toggle>
+	<hr/>
+	<p>Custom html labels:</p>
+	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/50' width=50 height=50/>"></x-toggle>
+	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/51' width=50 height=50/>"></x-toggle>
+	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/51/50' width=50 height=50/>"></x-toggle>
+	
+</body>
+
+<script type="text/javascript">
+
+	document.addEventListener('DOMComponentsLoaded', function(){
+		var form = document.querySelector("form");
+	    form.addEventListener("submit", function(e){
+	        // retrieves all _actual_ <input> elements (ie: not fake polyfills)
+	        var inputElems = e.currentTarget.elements;
+	        var vals = [];
+	        for (var i = 0; i < inputElems.length; i++) {
+	            var input = inputElems[i];
+	            if(!input.name) continue;
+	            if((input.type === "radio" || input.type === "checkbox") &&
+	            	(!input.checked))
+	            {
+	            	continue;
+	            }
+
+	            vals.push(encodeURIComponent(input.name) + "=" + 
+	                      encodeURIComponent(input.value));
+	        }
+	        alert("submitted: " + vals.join("&"));
+	        e.preventDefault();
+	        e.stopPropagation();
+	    });
+		
+		
+	}, false);
+
+</script>
+
+</html>

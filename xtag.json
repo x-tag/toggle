@@ -3,7 +3,7 @@
 	"tagName": "x-toggle",
 	"version": "0.2.1",
 	"author": "Daniel Buchner",
-	"description": "A polyfill for radiobutton/checkbox inputs to provide a consistent UI and simplify markup",
+	"description": "A polyfill merging radiobutton/checkbox inputs into a single tag to provide a consistent UI and simplify markup. Automatically switches between radiobutton and checkbox depending on name attribute.",
 	"demo": "demo/index.html",
 	"categories": [
 		"input"
@@ -17,11 +17,12 @@
 		"ios": 4
 	},
 	"documentation": {
-		"description": "A polyfill for radiobutton/checkbox inputs to provide a consistent UI and simplify markup",
+		"description": "A polyfill merging radiobutton/checkbox inputs into a single tag to provide a consistent UI and simplify markup. Automatically switches between radiobutton and checkbox depending on name attribute.",
 		"attributes": {
 			"no-box": "If set, hides the polyfill's checkbox/radio button.",
 			"label": "Contains the raw HTML string to render as the toggle's label.",
 			"name": "Handles the name of the input. Follows the same rules as radio/checkbox input naming, and is required for form submissions to see the input. Multiple <x-toggle>s with the same name automatically become radio buttons.",
+			"value": "Handles the input's value. Acts the same as any other <input> tag's value, and is submitted in forms.",
 			"group": "Checkboxes with the same group can be range-toggled by holding down the shift key while toggling checkboxes",
 			"active": "Indicates whether or not the toggle is the currently active toggle in of its group, if it has one.",
 			"checked": "Indicates whether the toggle is checked or not"
