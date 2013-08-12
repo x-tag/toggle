@@ -48,7 +48,7 @@ If set, the toggle will be marked as checked/chosen. Acts the same as the `<inpu
 
 ## ___active___
 
-Handles whether or not the toggle is the currently active toggle in of its group, if it has one.
+Handles whether or not the toggle is the currently active toggle in its group, if it has one.
 
 # Accessors
 
