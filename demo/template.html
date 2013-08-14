@@ -1,46 +1,9 @@
+{% extends "component-demo-base.html" %}
 
+{% set TAG_NAME="x-toggle" %}
+{% set COMPONENT_NAME="toggle" %}
 
-
-
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-    <title>Brick x-toggle demos</title>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600">
-    <link rel="stylesheet" type="text/css" href="../../../dist/brick.css"/>
-    <link rel="stylesheet" href="../../../site/css/main.css">
-    
-    <link rel="stylesheet" type="text/css" href="../../../site/css/prettify.css">
-    <link rel="stylesheet" type="text/css" href="demo.css"/>
-
-  </head>
-  <body>
-    <article>
-      <header class="site-header">
-        
-
-        
-<nav class="site-nav">
-  <a href="../../../index.html">Home</a>
-  <a href="../../../download.html">Download</a>
-  <a href="../../../docs.html">Documentation &amp; Demos</a>
-  <a href="http://github.com/mozilla/brick/">GitHub</a>
-  <a href="http://github.com/mozilla/brick/issues">Issues</a>
-</nav>
-
-
-        
-        
-      </header>
-      
-    <header>
-        <h1>x-toggle</h1> 
-    </header>
-    <a href="../../../docs.html">&laquo; Back to docs</a>
-    
+{% block demoContent %}
     <p>An <code class="prettyprint">&lt;x-toggle&gt;</code> is a component merging <code class="prettyprint">&lt;input type="radio"&gt;</code> and <code class="prettyprint">&lt;input type="checkbox"&gt;</code> into a single tag to provide a single consistent UI and simplify markup.</p>
     <p>Automatically switches between checkbox and radiobutton modes depending on <code>name</code> attributes.</p>
     <section class="demo-wrap">
@@ -164,26 +127,4 @@
         </div>
         <a href="#" class="top">Top</a>
     </section>
-
-
-      <footer>
-        
-<nav class="site-nav">
-  <a href="../../../index.html">Home</a>
-  <a href="../../../download.html">Download</a>
-  <a href="../../../docs.html">Documentation &amp; Demos</a>
-  <a href="http://github.com/mozilla/brick/">GitHub</a>
-  <a href="http://github.com/mozilla/brick/issues">Issues</a>
-</nav>
-
-        <a class="moz" href="https://mozilla.org/"><img alt="mozilla" height="32" src="../../../site/img/mozilla_wordmark.svg" title="built by Mozilla"></a>
-      </footer>
-    </article>
-    <script src="../../../dist/brick.js"></script>
-     
-    <script type="text/javascript" src="../../../site/js/prettify.js"></script>
-    <script type="text/javascript" src="../../../site/js/demo-page-helpers.js"></script>
-    <script type="text/javascript" src="demo.js"></script>
-
-  </body>
-</html>
+{% endblock %}
