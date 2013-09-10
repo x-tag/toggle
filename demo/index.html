@@ -3,24 +3,20 @@
 
 	<head>
 		<meta charset="utf-8" />
-		
+
 		<title>Toggle Demo - X-Tag</title>
-		<!-- use these imports instead of the Brick files if running from submodule
-          repository instead of the Brick repository -->
-        <!--
+
 		<link rel="stylesheet" type="text/css" href="x-tag-components.css"/>
 		<link rel="stylesheet" type="text/css" href="../src/toggle.css"/>
 		<script type="text/javascript" src="x-tag-components.js"></script>
-		<script type="text/javascript" src="../src/toggle.js"></script>	-->
-		<link rel="stylesheet" type="text/css" href="../../../dist/brick.css"/>
-    	<script type="text/javascript" src="../../../dist/brick.js"></script> 
-			
+		<script type="text/javascript" src="../src/toggle.js"></script>
+
 		<style type="text/css">
 			body {
 				padding: 30px;
 				margin: 0;
 			}
-			
+
 			[group="group1"] {
 				display: block;
 			}
@@ -28,7 +24,7 @@
 			form {
 				border: 1px solid grey;
 			}
-			
+
 			[name='boxless']{
 				font-size: 1.5em;
 				padding: 10px;
@@ -69,7 +65,7 @@
 	<x-toggle label="Delta" group="group1" value="D"></x-toggle>
 	<x-toggle label="Epsilon" group="group1" value="E"></x-toggle>
 	<hr/>
-	<form>	
+	<form>
 		<x-toggle label="One" name="number" value="1" checked></x-toggle>
 		<x-toggle label="Two" name="number" value="2"></x-toggle>
 		<x-toggle label="Three" name="number" value="3"></x-toggle>
@@ -88,7 +84,7 @@
 	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/50' width=50 height=50/>"></x-toggle>
 	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/51' width=50 height=50/>"></x-toggle>
 	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/51/50' width=50 height=50/>"></x-toggle>
-	
+
 </body>
 
 <script type="text/javascript">
@@ -108,15 +104,15 @@
 	            	continue;
 	            }
 
-	            vals.push(encodeURIComponent(input.name) + "=" + 
+	            vals.push(encodeURIComponent(input.name) + "=" +
 	                      encodeURIComponent(input.value));
 	        }
 	        alert("submitted: " + vals.join("&"));
 	        e.preventDefault();
 	        e.stopPropagation();
 	    });
-		
-		
+
+
 	}, false);
 
 </script>
