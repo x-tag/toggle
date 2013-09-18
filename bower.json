@@ -1,5 +1,5 @@
 {
-  "name": "toggle",
+  "name": "x-tag-toggle",
   "description": "",
   "version": "0.2.2",
   "keywords": [
@@ -11,6 +11,7 @@
     "src/toggle.css"
   ],
   "dependencies": {
-    "x-tag-core": "*"
+    "x-tag-core": "*",
+    "brick-common": "*"
   }
 }
