@@ -1,7 +1,7 @@
 {
 	"name": "Toggle",
 	"tagName": "x-toggle",
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"author": "Daniel Buchner",
 	"description": "A polyfill merging radiobutton/checkbox inputs into a single tag to provide a consistent UI and simplify markup. Automatically switches between radiobutton and checkbox depending on name attribute.",
 	"demo": "demo/testpage.html",
