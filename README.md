@@ -30,7 +30,7 @@ Note that toggles with the same name and form scope will automatically become ra
 
 ## ___label___
 
-Contains the raw HTML to render as the toggle's label.
+Set the textual label of the toggle element
 
 ## ___group___
 
@@ -59,7 +59,7 @@ Returns a list of the `<x-toggle>` elements that share the same group
 # Styling
 
 - To style the toggle itself, apply styles to `x-toggle`
-- To style the toggle's content/label, apply styles to `x-toggle > .x-toggle-content`
+- To set the text for a toggle's label, add a `label` attribute (text shown using :after pseudo element)
 - To style the toggle's polyfill checkbox/radiobutton, apply styles to  `x-toggle > .x-toggle-check`
 - To style checkbox toggles only, apply styles to `x-toggle[type='checkbox']`
 - To style radio toggles only, apply styles to `x-toggle[type='radio']`
