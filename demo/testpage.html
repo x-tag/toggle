@@ -60,15 +60,15 @@
 <body>
 
 	<x-toggle label="Alpha" group="group1" value="A" checked></x-toggle>
-	<x-toggle label="Beta" group="group1" value="B"></x-toggle>
+	<x-toggle label="Beta" group="group1" value="B" tabindex="1"></x-toggle>
 	<x-toggle label="Gamma" group="group1" value="C"></x-toggle>
 	<x-toggle label="Delta" group="group1" value="D"></x-toggle>
 	<x-toggle label="Epsilon" group="group1" value="E"></x-toggle>
 	<hr/>
 	<form>
-		<x-toggle label="One" name="number" value="1" checked></x-toggle>
-		<x-toggle label="Two" name="number" value="2"></x-toggle>
-		<x-toggle label="Three" name="number" value="3"></x-toggle>
+		<x-toggle group="numbers" label="One" name="number" value="1" checked></x-toggle>
+		<x-toggle group="numbers" label="Two" name="number" value="2"></x-toggle>
+		<x-toggle group="numbers" label="Three" name="number" value="3"></x-toggle>
 		<br/>
 		<x-toggle label="Lone checkbox" name="lone-check" value="wow" checked></x-toggle>
 		<br/>
@@ -80,10 +80,21 @@
 	<x-toggle name="boxless" label="Boxless radio 2" no-box></x-toggle>
 	<x-toggle name="boxless" label="Boxless radio 3" no-box></x-toggle>
 	<hr/>
-	<p>Custom html labels:</p>
-	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/50' width=50 height=50/>"></x-toggle>
-	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/50/51' width=50 height=50/>"></x-toggle>
-	<x-toggle class="custom-html-toggle" label="<img src='http://placecage.com/c/51/50' width=50 height=50/>"></x-toggle>
+	<h3>Toggles in a Togglebar:</h3>
+	<x-togglebar>
+		<x-toggle name="togglebar1" label="Category View"></x-toggle>
+		<x-toggle name="togglebar1" label="Block View"></x-toggle>
+		<x-toggle name="togglebar1-light" label="Flashlight"></x-toggle>
+		<x-toggle name="togglebar1-night" label="Night Mode"></x-toggle>
+	</x-togglebar>
+	
+	<h3>Toggles in a Vertical Togglebar:</h3>
+	<x-togglebar orientation="vertical" style="float: left;">
+		<x-toggle name="togglebar2" label="View 1"></x-toggle>
+		<x-toggle name="togglebar2" label="View 2"></x-toggle>
+		<x-toggle name="togglebar2-light" label="Foo"></x-toggle>
+		<x-toggle name="togglebar2-night" label="Bar"></x-toggle>
+	</x-togglebar>
 
 </body>
 
