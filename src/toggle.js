@@ -42,7 +42,7 @@
       }
     });
   }
-  
+
   function toggleGroup(toggle){
       if (shifted && toggle.group && toggle.type != 'radio') {
         var toggles = toggle.groupToggles;
@@ -54,7 +54,7 @@
           var index = toggles.indexOf(toggle);
           var activeIndex = toggles.indexOf(active);
           var minIndex = Math.min(index, activeIndex);
-          var maxIndex = Math.max(index, activeIndex); 
+          var maxIndex = Math.max(index, activeIndex);
           toggles.slice(minIndex, maxIndex + 1).forEach(function(toggle){
             if (toggle != active) toggle.checked = state;
           });
@@ -62,7 +62,7 @@
         }
       }
   }
-  
+
   function activateToggle(toggle){
     if (inTogglebar(toggle)) return;
     toggle.groupToggles.forEach(function (node) {
@@ -70,9 +70,9 @@
     });
     toggle.active = true;
   }
-  
+
   function inTogglebar(toggle){
-    return toggle.parentNode && toggle.parentNode.nodeName == 'X-TOGGLEBAR';
+    return toggle.parentNode && toggle.parentNode.nodeName.toLowerCase() == 'x-togglebar';
   }
 
   var shifted = false;
@@ -100,11 +100,11 @@
     },
     'tap:delegate(x-toggle)': function (e) {
       var input = this.xtag.input;
-      if (input.type == 'radio' ? !this.checked : true) {  
+      if (input.type == 'radio' ? !this.checked : true) {
 	    input.checked = !input.checked;
 	    var change = document.createEvent('Event');
 		change.initEvent('change', true, false);
-		input.dispatchEvent(change); 
+		input.dispatchEvent(change);
 	  }
 	  input.focus();
     },
@@ -115,9 +115,9 @@
       activateToggle(this);
     }
   });
-	
+
   var template = xtag.createFragment('<input /><div class="x-toggle-check"></div>');
-	
+
   xtag.register('x-toggle', {
     lifecycle: {
       created: function () {
@@ -220,12 +220,12 @@
       }
     }
   });
-  
+
   xtag.register('x-togglebar', {
     events: {
-        
+
     }
   });
-  
+
 
 })();
