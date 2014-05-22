@@ -101,12 +101,12 @@
     'tap:delegate(x-toggle)': function (e) {
       var input = this.xtag.input;
       if (input.type == 'radio' ? !this.checked : true) {
-      input.checked = !input.checked;
-      var change = document.createEvent('Event');
-      change.initEvent('change', true, false);
-      input.dispatchEvent(change);
-    }
-    input.focus();
+        input.checked = !input.checked;
+        var change = document.createEvent('Event');
+        change.initEvent('change', true, false);
+        input.dispatchEvent(change);
+      }
+      input.focus();
     },
     'change:delegate(x-toggle)': function (e) {
       // manage the active state of any group toggles
@@ -220,7 +220,7 @@
       }
     }
   });
-      
+  
   xtag.register('x-togglebar', {
     accessors: {
       activeValues: {
