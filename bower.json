@@ -1,11 +1,7 @@
 {
   "name": "x-tag-toggle",
   "description": "",
-<<<<<<< HEAD
-  "version": "0.2.8",
-=======
-  "version": "0.2.9",
->>>>>>> fb27c41ba8896d07240caa33f18914a9ccfc2db3
+  "version": "0.2.10",
   "keywords": [
     "web-components",
     "x-tag"
