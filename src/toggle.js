@@ -221,7 +221,18 @@
     }
   });
   
+  function updateActiveValues(togglebar){
+    togglebar.activeValues = xtag.query(togglebar, 'input:checked').map(function(node){
+      if (node.hasAttribute('value')) return node.value;
+    }).join(', ');
+  }
+  
   xtag.register('x-togglebar', {
+    lifecycle: {
+      created: function(){
+        updateActiveValues(this);
+      }
+    },
     accessors: {
       activeValues: {
         attribute: { name: 'active-values' }
@@ -229,7 +240,7 @@
     },
     events: {
       change: function(e){
-        this.activeValues = xtag.query(this, 'input:checked').map(function(node){ return node.value; }).join(', ');
+        updateActiveValues(this);
       }
     }
   });
