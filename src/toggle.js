@@ -169,17 +169,9 @@
         }
       },
       name: {
-        attribute: {
-          skip: true // to prevent recursion when needing to remove attribute
-        },
+        attribute: {},
         set: function (name) {
-          if (name === null) {
-            this.removeAttribute("name");
-            this.type = 'checkbox';
-          }
-          else {
-            this.setAttribute("name", name);
-          }
+          if (name === null) this.type = 'checkbox';
           this.xtag.input.name = name;
           updateScope(this.xtag.scope);
         }

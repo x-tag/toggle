@@ -1,6 +1,6 @@
 {
   "name": "x-toggle",
-  "version": "0.2.11",
+  "version": "0.2.14",
   "dependencies": {},
   "devDependencies": {
     "bower": "~1.2.0",
